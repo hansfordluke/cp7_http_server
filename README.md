@@ -1,5 +1,5 @@
 #cp7_http_server
-# HTTPCovertChannel-Red Kraken
+## Challenge Problem 7 - Covert HTTP channel -Red Kraken
 ## ACE-2022
 ## Contributors: Luke Hansford | Micah Karchner | Wei Wei Kellmann
 
@@ -21,3 +21,4 @@ The URN length = Hex value [1 to 16]
 The URL request concludes with a file type from a list of file types ['.zip''.txt''.html''.jpg''.pdf''.html']
 
 Server reponse: error code 404
+
