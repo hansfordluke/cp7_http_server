@@ -1,4 +1,4 @@
-
+#cp7_http_server
 # HTTPCovertChannel-Red Kraken
 ## ACE-2022
 ## Contributors: Luke Hansford | Micah Karchner | Wei Wei Kellmann
@@ -12,7 +12,7 @@ _Relevant Materials_ included within this repository:
 * http_server.py
 
 _To Run_:
-Python client.py
+Python http_client.py
 <Enter Message>
 The ASCII converts to Hex
 Hex on a base of 16 [0 to 15] to [1 to 16]
