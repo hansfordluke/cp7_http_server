@@ -8,7 +8,8 @@ PORT = 9999
 class TestHTTP(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        self.send_response(200)
+        #Error Message 404 indicates error on the Client side
+        self.send_response(404)
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
