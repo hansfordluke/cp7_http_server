@@ -1,5 +1,8 @@
-import requests
+import http.client
 
-payload = {"URL_addition": "Ouch"}
-r = requests.get("http://httpbin.org/get", params = payload)
-print(r.url)
+connection = http.client.HTTPConnection("localhost:9999")
+connection.request("GET", "/")
+response = connection.getresponse()
+print("Status: {} and reason: {}".format(response.status, response.reason))
+
+connection.close()
