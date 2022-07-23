@@ -1,5 +1,5 @@
 #cp7_http_server
-# HTTPCovertChannel-Red Kraken
+## Challenge Problem 7 - Covert HTTP channel - Red Kraken
 ## ACE-2022
 ## Contributors: Luke Hansford | Micah Karchner | Wei Wei Kellmann
 
@@ -10,8 +10,9 @@ _Relevant Materials_ included within this repository:
 
 * http_client.py
 * http_server.py
+<<<<<<< HEAD
 
-_To Run_:
+_To Run_the HTTP server-client:
 Python http_client.py
 <Enter Message>
 The ASCII converts to Hex
