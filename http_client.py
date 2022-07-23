@@ -33,7 +33,7 @@ if __name__ == "__main__":
     hex_word, hex_wordlist = randomised_word(input) # words used to represent hex value length from 1-16
     payload = ''    
     for position, hex_word in enumerate(hex_wordlist): 
-        special_char = ["-", "_", "&", "%", "@", "$", "!"] # special char used to separate hex words
+        special_char = ["-", "_", "&", "?", "!"] # special char used to separate hex words
         file_type = [".jpg", ".zip", ".txt", ".pdf", ".html"] # file type to close the url
         if position % 2 == 0: 
             payload += hex_word + f"{random.choice(special_char)}" # special_char separates the hex characters

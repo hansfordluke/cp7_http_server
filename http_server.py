@@ -1,3 +1,4 @@
+from heapq import _heapify_max
 import os
 os.system("pip install requests")
 
@@ -16,19 +17,26 @@ class TestHTTP(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(bytes("<html><body><h1>HELLO WORLD!</h1></body></html>", "utf-8"))
-        res_parts = res_path.split('.')[0]
-        #print(res_parts)
-        byte_parts = [part.split("/") for part in res_parts]
-        print(byte_parts)
+        res_parts = res_path.split('.')[0] #removing file enxtension
+        hex_words = res_parts.split("/")[1:] #stripping empty first string
+        hex_values = []
+        for hex_string in hex_words:
+            hex_byte_space = re.split("-|_|!|&|%", hex_string)[:2] #Splitting two hex values apart whitespace to give byte representation
+            for single_byte in hex_byte_space:
+                hex_values.append(len(single_byte)-1)
+        byte_rcnstrctd = []
+        
+        hex_values = []
+        for i in range(0,len(hex_values)-1,2):
+            value_to_hex1 = hex(hex_values[i]).split("x")[1]
+            value_to_hex2 = hex(hex_values[i+1]).split("x")[1]
+            byte_rcnstrctd.append(str(value_to_hex1) + str(value_to_hex2))
+        for byte in byte_rcnstrctd:
+            hex_values.append("0x"+byte)
+        print(hex_values)
+        # print(hex_bytes)
         # split_res_path = re.split("/|.", res_path)
         #print(split_res_path)
-        return res_path
-
-def urn_path_parser(urn_path):
-    split_path = urn_path.split("/")
-    split_path = [path.strip() for path in split_path]
-    print(split_path)
 
 def url_splitter(url):
     slashparts = url.split('/')
