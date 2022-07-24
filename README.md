@@ -13,20 +13,35 @@ _Relevant Materials_ included within this repository:
 * http_server.py
 
 _To Run_:
+1. [Start up the server]
+	* $python3 http_server.py
 
-* Python http_client.py
-* [Enter Message]
-* The ASCII converts to Hex
-* Hex on a base of 16 [0 to 15] to [1 to 16]
-* Random generation of URN separated by '/' between each hex
-* The URN length = Hex value [1 to 16]
-* The URL request concludes with a file type from a list of file types 
-- '.zip'
-- '.txt'
-- '.html'
-- '.jpg'
-- '.pdf'
-- '.html'
+2. [Start up the client]
+	* $python3 http_client.py
+3. Identify file type: [text] or [file]
+	* [T] for text; [F] for file
 
-_Server reponse_: error code 404
+4. (a) For [File], **Provide Pathway**
+4. (b) For [Text], **Enter Message**
+
+5. [Automatic Message encoding] 
+	* The ASCII text converts to Hex bytes
+	* Hex on a base of 16 [0 to 15] adjusted to [1 to 16]
+	* Random generation of URI separated by '/' between each hex byte
+		* The URI length = Hex value [1 to 16]
+	* The URL request concludes with a file type from a list of file types 
+		* '.zip'
+		* '.txt'
+		* '.html'
+		* '.jpg'
+		* '.pdf'
+		* '.html'
+	* 
+		
+6. The client sends the HTTP GET request to the server
+
+_Server Reponse_:
+1. Receives the GET request
+2. [Decodes the message]
+	* Reverses the process that the client used to encode the message
 
