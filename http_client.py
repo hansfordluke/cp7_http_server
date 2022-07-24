@@ -4,18 +4,31 @@ os.system("pip3 install requests")
 import random
 import requests
 import string
+import binascii
 
 def msg_input():
-    msg = input("Enter Message: ")
-    msg_to_hex = [hex(ord(char)) for char in msg] 
-    print(f"{msg} in hex bytes:", msg_to_hex)
+    txt_or_file = input("Enter T for text, F for file: ")
+    if txt_or_file == "T":
+        msg = input("Enter Message: ")  
+        msg_to_hex = [hex(ord(char)) for char in msg] 
+        print(f"{msg} in hex bytes:", msg_to_hex)
+    else:
+        filepath = input("Enter filepath: ")
+        with open(filepath, 'rb') as f:
+            file = f.read()
+        msg_to_hex = binascii.hexlify(file)
+        print(f"{filepath} in hex bytes:", msg_to_hex)
     return msg_to_hex
 
 def randomised_word(msg_to_hex): #The function responsible for generating the word
     """Function splits the 2 character hex value for each byte and creates a word of length len(hex_char[i]) dynamically"""
     hex_wordlist = []
     for value in msg_to_hex:
-        hex_values = value.split("x")[1]
+        print("value: ", value)
+        if type(value) == str:
+            hex_values = value.split("x")[1]
+        else:
+            hex_values = str(value)
         for char in hex_values: #Split the string away from the 0x hex indicator
             print(f"Hex value {hex_values} split for hex_word_length: " + char)
             lowercase_letters = string.ascii_lowercase
