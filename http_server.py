@@ -36,14 +36,16 @@ class TestHTTP(BaseHTTPRequestHandler):
             byte_rcnstrctd.append(str(value_to_hex1) + str(value_to_hex2))
         for byte in byte_rcnstrctd: # loop appends 0x notation for hex conversion later
             hex_bytes.append("0x"+byte)
-        for hex_byte in hex_bytes: # loop converts hex back to ASCII
-            msg_rcnstrctd = bytes.fromhex(hex_byte[2:])
-            ascii_str.append(msg_rcnstrctd.decode())
+            print("byte: ", byte)
+            msg_rcnstrctd = bytes.fromhex(byte)
+            ascii_str.append(msg_rcnstrctd.decode(errors="replace"))
+        # for hex_byte in hex_bytes: # loop converts hex back to ASCII
+        #     msg_rcnstrctd = bytes.fromhex(byte_rcnstrctd)
+        #     ascii_str.append(msg_rcnstrctd.decode())
         ascii_str = "".join(ascii_str)
         print("Original msg: ", ascii_str)
 
 server = HTTPServer((HOST, PORT), TestHTTP)
 print("Server running...")
-#urn_path_parser(TestHTTP.urn_path)
 server.serve_forever()
 server.server_close()

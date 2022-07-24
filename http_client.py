@@ -14,9 +14,9 @@ def msg_input():
         print(f"{msg} in hex bytes:", msg_to_hex)
     else:
         filepath = input("Enter filepath: ")
-        with open(filepath, 'rb') as f:
-            file = f.read()
-        msg_to_hex = binascii.hexlify(file)
+        with open(filepath, 'r') as f:
+            file = f.read().rstrip()
+        msg_to_hex = binascii.hexlify(file.encode("utf-8"))
         print(f"{filepath} in hex bytes:", msg_to_hex)
     return msg_to_hex
 
@@ -43,7 +43,7 @@ def randomised_word(msg_to_hex): #The function responsible for generating the wo
 if __name__ == "__main__":
     input = msg_input()
     hex_word, hex_wordlist = randomised_word(input) # words used to represent hex value length from 1-16
-    payload = ''    
+    payload = ''    #to replace the URI
     for position, hex_word in enumerate(hex_wordlist): 
         special_char = ["-", "_", "&", "!"] # special char used to separate hex words
         file_type = [".jpg", ".zip", ".txt", ".pdf", ".html"] # file type to close the url
