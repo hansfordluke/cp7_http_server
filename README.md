@@ -24,7 +24,11 @@ _To Run_:
 4. (a) For [File], **Provide Pathway**
 4. (b) For [Text], **Enter Message**
 
-5. [Automatic Message encoding] 
+5. Specify path to [Server] or [Website]
+	* The server [temporary] stores message
+	* The website [permanently] logs message
+
+6. [Automatic Message encoding] 
 	* The ASCII text converts to Hex bytes
 	* Hex on a base of 16 [0 to 15] adjusted to [1 to 16]
 	* Random generation of URI separated by '/' between each hex byte
@@ -36,9 +40,8 @@ _To Run_:
 		* '.jpg'
 		* '.pdf'
 		* '.html'
-	* 
 		
-6. The client sends the HTTP GET request to the server
+7. The client sends the HTTP GET request to the server
 
 _Server Reponse_:
 1. Receives the GET request
