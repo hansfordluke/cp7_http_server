@@ -1,4 +1,3 @@
-from heapq import _heapify_max
 import os
 os.system("pip install requests")
 
@@ -37,32 +36,11 @@ class TestHTTP(BaseHTTPRequestHandler):
             byte_rcnstrctd.append(str(value_to_hex1) + str(value_to_hex2))
         for byte in byte_rcnstrctd: # loop appends 0x notation for hex conversion later
             hex_bytes.append("0x"+byte)
-        # print(hex_bytes)
         for hex_byte in hex_bytes: # loop converts hex back to ASCII
-            # int_value = int(hex_byte, 16)
-            # print(int_value)
-            # hex_value = hex(int_value)
-            # print(hex_value)
-            # print(type(hex_value))
             msg_rcnstrctd = bytes.fromhex(hex_byte[2:])
             ascii_str.append(msg_rcnstrctd.decode())
         ascii_str = "".join(ascii_str)
         print("Original msg: ", ascii_str)
-        # print(hex_bytes)
-        # split_res_path = re.split("/|.", res_path)
-        #print(split_res_path)
-
-def url_splitter(url):
-    slashparts = url.split('/')
-    base_name = '/'.join(slashparts[:3]) + '/'
-    dir_name = '/'.join(slashparts[:-1]) + '/'
-    res_path = '/'.join(slashparts[3:]) + '/'
-    return base_name, dir_name, res_path
-    # print('slashparts = %s' % slashparts)
-    # print('basename = %s' % base_name)
-    # print('dirname = %s' % dir_name)
-    # print('res_path = %s' % res_path)
-
 
 server = HTTPServer((HOST, PORT), TestHTTP)
 print("Server running...")

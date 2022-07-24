@@ -9,7 +9,6 @@ def msg_input():
     msg = input("Enter Message: ")
     msg_to_hex = [hex(ord(char)) for char in msg] 
     print(f"{msg} in hex bytes:", msg_to_hex)
-    binaryStr = ' '.join(format(ord(item), 'b') for item in msg)
     return msg_to_hex
 
 def randomised_word(msg_to_hex): #The function responsible for generating the word
