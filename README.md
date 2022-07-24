@@ -48,3 +48,9 @@ _Server Reponse_:
 2. [Decodes the message]
 	* Reverses the process that the client used to encode the message
 
+8. Login credentials to frozen-ravine-68174.herokuapp.com/admin/
+	* username: admin
+	* password: password
+	* Go to this admin website to view the live changes to the online database of decoded messages
+	* Run the client and then refresh the admin page to view the new database entry
+
